@@ -13,6 +13,10 @@ class Startup(commands.Cog):
         print(f'Logged in as: {self.client.user}\nWith ID: {self.client.user.id}')
         self.logWebhook.send(conetnt=f'I have come online!')
 
+    @commands.command()
+    async def test(ctx):
+        await self.on_ready()
+
 
 def setup(client):
     client.add_cog(Startup(client))
