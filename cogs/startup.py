@@ -14,7 +14,7 @@ class Startup(commands.Cog):
         self.logWebhook.send(conetnt=f'I have come online!')
 
     @commands.command()
-    async def test(ctx):
+    async def test(self,ctx):
         await self.on_ready()
 
 
