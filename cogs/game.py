@@ -23,7 +23,7 @@ class Game(commands.Cog):
     @commands.command(brief='Rests the name of the voice channel.')
     async def reset(self, ctx):
         if ctx.message.author.guild_permissions >= discord.Permissions(manage_guild=True) or commands.has_role(os.environ.get('MANAGER_ROLE_ID')):
-            if ctx.message.author.voice.channel is not None:
+            if ctx.message.author.voice is not None:
                 await ctx.message.author.voice.channel.edit(name='game-chat', reason=f'{ctx.message.author} reset the room name.')
                 await ctx.send(f'I have changed the name of your voice channel to `game-chat`')
             else:
