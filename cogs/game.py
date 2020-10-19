@@ -1,4 +1,5 @@
 import discord
+import os
 from discord.ext import commands
 from main import logWebhook
 
@@ -7,9 +8,9 @@ class Game(commands.Cog):
     def __init__(self,client):
         self.client=client
 
-    @commands.command()
-    async def room(self,code:str):
-        if ctx.message.author.guild_permissions>= discord.Permissionss(manage_guild=True) or commands.has_role(os.environ.get('MANAGER_ROLE_ID')):
+    @commands.command(brief='Changes the name of the game channel to whatever you specify.')
+    async def room(self,ctx,code:str):
+        if ctx.message.author.guild_permissions>= discord.Permissions(manage_guild=True) or commands.has_role(os.environ.get('MANAGER_ROLE_ID')):
             if ctx.message.author.voice.channel is not None:
                 await ctx.message.author.voice.channel.edit(name=code.upper(),reason=f'{ctx.message.author} changed the room code.')
                 await ctx.send(f'I have changed the name of your voice channel to {code.upper()}')
