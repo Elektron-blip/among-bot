@@ -14,7 +14,7 @@ class Game(commands.Cog):
         if ctx.message.author.guild_permissions >= discord.Permissions(manage_guild=True) or commands.has_role(os.environ.get('MANAGER_ROLE_ID')):
             if ctx.message.author.voice.channel is not None:
                 await ctx.message.author.voice.channel.edit(name=code.upper(), reason=f'{ctx.message.author} changed the room code.')
-                await ctx.channel.edit(topic=f'Game in progress with code: {code.upper()}',reason=f'{ctx.message.author} changed the room code.')
+                await ctx.channel.edit(topic=f'Game in progress with code: {code.upper()}', reason=f'{ctx.message.author} changed the room code.')
                 await ctx.send(f'I have changed the name of your voice channel to {code.upper()} and changed this channel\'s topic to `Game in progress with code: {code.upper()}`')
             else:
                 await ctx.send('You need to be in a voice channel to use this command.')
@@ -27,7 +27,7 @@ class Game(commands.Cog):
             if ctx.message.author.voice is not None:
                 await ctx.message.author.voice.channel.edit(name='game-chat', reason=f'{ctx.message.author} reset the room name.')
                 await ctx.channel.edit(topic='No game in progress.', reason=f'{ctx.message.author} ended the game.')
-                await ctx.send(f'I have changed the name of your voice channel to `game-chat` and the channel topic to `No game in progress.`')
+                await ctx.send(f'I have changed the name of your voice channel to `game-chat` and the channel topic to `No game in progress.`')``
             else:
                 await ctx.send('You need to be in a voice channel to use this command.')
         else:
