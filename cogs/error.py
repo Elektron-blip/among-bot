@@ -9,7 +9,7 @@ class Error(commands.Cog):
         self.logWebhook=logWebhook
 
     @commands.Cog.listener()
-    async def on_command_error(self,error):
+    async def on_command_error(self,ctx,error):
         print(error)
         self.logWebhook.send(content=f'```console\n{error}\n```')
 

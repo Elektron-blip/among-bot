@@ -8,7 +8,7 @@
             "name": "Python: Run main.py",
             "type": "python",
             "request": "launch",
-            "program": ",ain.py",
+            "program": "main.py",
             "console": "internalConsole"
         }
     ]
