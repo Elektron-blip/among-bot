@@ -17,6 +17,5 @@ class Startup(commands.Cog):
             content=f'Logged in as: {self.client.user}\nWith ID: {self.client.user.id}')
 
 
-
 def setup(client):
     client.add_cog(Startup(client))
