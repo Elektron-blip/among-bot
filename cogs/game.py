@@ -11,7 +11,7 @@ class Game(commands.Cog):
 
     @commands.command(brief='Changes the name of the game channel to whatever you specify.')
     async def room(self, ctx, code: str):
-        if ctx.message.author.guild_permissions >= discord.Permissions(manage_guild=True) or commands.has_role(os.environ.get('MANAGER_ROLE_ID')):
+        if ctx.message.author.guild_permissions >= discord.Permissions(manage_guild=True) or discord.utild.get(ctx.message.author.roles,id=os.environ.get('MANAGER_ROLE_ID') is discord.Role):
             if ctx.message.author.voice.channel is not None:
                 await ctx.message.author.voice.channel.edit(name=code.upper(), reason=f'{ctx.message.author} changed the room code.')
                 await ctx.channel.edit(topic=f'Game in progress with code: {code.upper()}', reason=f'{ctx.message.author} changed the room code.')
