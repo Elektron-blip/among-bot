@@ -13,7 +13,7 @@ class Fun(commands.Cog):
         await ctx.message.delete()
         sentMessage = await ctx.send(content=message, allowed_mentions=discord.AllowedMentions.none())
         logWebhook.send(
-            content=f'{ctx.message.author.mention} used me to say ```{message}``` in {ctx.channel.mention}. Click [here](<{sentMessage.jump_url}>) to go to that message.')
+            content=f'{ctx.message.author.mention} used me to say ```{message}``` in {ctx.channel.mention}. Click [here](<{sentMessage.jump_url}>) to go to that message.',allowed_mentions=discord.AllowedMentions.none())
 
 
 def setup(client):
