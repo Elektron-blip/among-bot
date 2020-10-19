@@ -16,7 +16,7 @@ class Game(commands.Cog):
             else:
                 await ctx.send('You need to be in a voice channel to use this command.')
         else:
-            await ctx.send(f'You dont have the neccessary permissions to run this command. (You will need either MANAGE_GUILD permissions or the <@&{os.environ.get('MANAGER_ROLE_ID')}> role to be able to use this command)')
+            await ctx.send(f'You dont have the neccessary permissions to run this command. (You will need either MANAGE_GUILD permissions or the manager role to be able to use this command)')
 
 def setup(client):
     client.add_cog(Game(client))
