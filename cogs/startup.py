@@ -19,3 +19,4 @@ class Startup(commands.Cog):
 
 def setup(client):
     client.add_cog(Startup(client))
+
