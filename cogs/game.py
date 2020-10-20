@@ -1,7 +1,6 @@
 import discord
 import os
 from discord.ext import commands
-from main import logWebhook
 
 class Game(commands.Cog):
 
