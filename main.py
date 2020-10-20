@@ -5,7 +5,6 @@ import requests
 
 client = commands.Bot(command_prefix=',', intents=discord.Intents.all())
 
-
 logWebhook = discord.Webhook.from_url(
     url=os.environ.get('LOG_WEBHOOK_URL'), adapter=discord.RequestsWebhookAdapter())
 
