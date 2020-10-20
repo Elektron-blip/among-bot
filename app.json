@@ -1,0 +1,20 @@
+{
+    "name": "Among Bot Discord Bot",
+    "description": "A barebones Among Us bot using discord.py",
+    "repository": "https://gitlab.com/ELektron-blip/among-bot.git",
+    "logo": "",
+    "keywords": ["python","discord.py","among us","discord","discord bot"],
+    "env":{
+        "TOKEN":{
+            "description":"The token of your discord bot."
+        },
+        "LOG_WEBHOOK_URL":{
+            "description":"The URL of the discord webhook you plan on using for the logs."
+        },
+        "MANAGER_ROLE_ID":"The id of the manager role you plan on using in your server."
+    },
+    "image":"heroku/pythom",
+    "website":"https://gitlab.com/Elektron-blip/among-bot"
+
+  }
+  
