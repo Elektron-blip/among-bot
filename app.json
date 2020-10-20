@@ -10,7 +10,9 @@
         "LOG_WEBHOOK_URL":{
             "description":"The URL of the discord webhook you plan on using for the logs."
         },
-        "MANAGER_ROLE_ID":"The id of the manager role you plan on using in your server."
+        "MANAGER_ROLE_ID":{
+            "description":"The ID of the manager role in the server you plan on using this bot in."
+        }
     },
     "image":"heroku/pythom",
     "website":"https://gitlab.com/Elektron-blip/among-bot"
