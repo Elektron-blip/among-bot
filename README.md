@@ -1,6 +1,6 @@
 # Among Bot
 
-Among Bot is a very basic [discord](https://dicord.com) bot made using discord.py.
+Among Bot is a very basic [discord](https://discord.com) bot made using discord.py.
 
 ## Usage
 
