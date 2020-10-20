@@ -4,7 +4,6 @@ from discord.ext import commands
 
 vcManager = {}
 
-
 class Indev(commands.Cog):
 
     def __init__(self, client):
