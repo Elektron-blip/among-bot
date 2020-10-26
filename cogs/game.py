@@ -1,35 +1,25 @@
-import discord
 import os
+import discord
 from discord.ext import commands
+from main import logWebhook
+
 
 class Game(commands.Cog):
 
     def __init__(self, client):
+
         self.client = client
 
-    @commands.command(brief='Changes the name of the game channel to whatever you specify.')
-    async def room(self, ctx, code: str):
-        if ctx.message.author.guild_permissions >= discord.Permissions(manage_guild=True) or discord.utils.get(ctx.message.author.roles, id=os.environ.get('MANAGER_ROLE_ID')) is discord.Role:
-            if ctx.message.author.voice.channel is not None:
-                await ctx.message.author.voice.channel.edit(name=code.upper(), reason=f'{ctx.message.author} changed the room code.')
-                await ctx.channel.edit(topic=f'Game in progress with code: {code.upper()}', reason=f'{ctx.message.author} changed the room code.')
-                await ctx.send(f'I have changed the name of your voice channel to {code.upper()} and changed this channel\'s topic to `Game in progress with code: {code.upper()}`')
-            else:
-                await ctx.send('You need to be in a voice channel to use this command.')
-        else:
-            await ctx.send(f'You dont have the neccessary permissions to run this command.  (You will need either MANAGE_GUILD permissions or the manager role to be able to use this command)')
-
-    @commands.command(brief='Rests the name of the voice channel.')
-    async def reset(self, ctx):
-        if ctx.message.author.guild_permissions >= discord.Permissions(manage_guild=True) or commands.has_role(os.environ.get('MANAGER_ROLE_ID')):
+    @commands.command(brief='Creates a channel with the name as the game code.', description='The bot creates a voice channel and renames it to the game code and gives the creator extra permissions in the channel.')
+    async def create(self, ctx, code: str):
+        if ctx.message.author.guild_permissions >= discord.Permissions(manage_channels=True) or ctx.guild.get_role(os.environ.get('MANAGER_ROLE_ID')) in ctx.message.author.roles:
             if ctx.message.author.voice is not None:
-                await ctx.message.author.voice.channel.edit(name='game-chat', reason=f'{ctx.message.author} reset the room name.')
-                await ctx.channel.edit(topic='No game in progress.', reason=f'{ctx.message.author} ended the game.')
-                await ctx.send(f'I have changed the name of your voice channel to `game-chat` and the channel topic to `No game in progress.`')
-            else:
-                await ctx.send('You need to be in a voice channel to use this command.')
+                if ctx.message.author.is_on_mobile() is False:
+                    vc = await ctx.guild.create_voice_channel(name=code, overwrites=discord.PermissionOverwrite(mute_members=True, priority_speaker=True), category=ctx.guild.get_channel(os.environ.get('VOICE_CATEGORY')), reason=f'{ctx.message.author} created this channel.', bitrate=int(ctx.guild.bitrate_limit), user_limit=10)
+                    await ctx.message.author.edit(nick=f'{ctx.message.author.display_name} (manager)', voice_channel=vc)
         else:
-            await ctx.send(f'You dont have the neccessary permissions to run this command. (You will need either MANAGE_GUILD permissions or the manager role to be able to use this command)')
+            await ctx.send('You don\'t satisfy one or more of these requirements:\n- User has either the manage_channel guild permission or has the manager role\n- User must be in a voice channel\n- User must be a logged in on anything but a phone or console')
+
 
 def setup(client):
     client.add_cog(Game(client))
