@@ -1,4 +1,5 @@
 # Among Bot
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Elektron-blip/among-bot/)
 
 Among Bot is a very basic [discord](https://discord.com) bot made using discord.py.
 
