@@ -25,4 +25,4 @@ jobs:
     - name: Commit files
       run: git commit -am 'GitHub Actions - Formatted using black formatter.'
     - name: Push changes
-      run: git push
+      run: git push origin main
